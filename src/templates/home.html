@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!--{% extends 'base.html' %}-->
+<html lang="en">
+<head>
+    {% block head %}
+   
+    <title> Home</title>
+    
+    {% endblock %}
+    
+    {% load static %}
+    <link rel ="stylesheet" type ="text/css" href="{% static 'Recommender/style.css' %}">
+    <meta charset="UTF-8">
+</head>
+<body>
+    {% block body %}
+<h1> hello</h1>
+<button type="button" class="btn btn-primary">primary</button>
+<div class = "jumbotron">
+    <p1>test</p1></div>
+    {% endblock %}
+</body>
+</html> 
