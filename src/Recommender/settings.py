@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'Database',
     'Home',
     'bootstrap4',
+    'django_extensions',
+    'import_export'
 ]
 
 MIDDLEWARE = [
@@ -125,3 +127,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'static'),
 )
+LOGIN_REDIRECT_URL = 'logged_in'

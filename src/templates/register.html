@@ -1,19 +1,22 @@
 <html>
+    {% extends 'base.html' %}
 <h1> Register </h1>
 </html>
 
-{%block content %}
-
+{%block body %}
+<br>
     <form method="POST">
 
-        {% csrf_token %} #This token is used to prevent CSRF attacks
-        {{form.as_p}} # Formatting by paragraph
+        {% csrf_token %}
+        <!-- This token is used to prevent CSRF attacks-->
 
-        #Button for users to submit with
+        {{form.as_p}}<!--  # Formatting by paragraph-->
+
+<!--        Button for users to submit with-->
         <button class = "btn" style= "background-color: darkgray; color:blue" type="submit">Register</button>
 
 </form>
-#Crete an alternative button for a user to nav to login screen if they have an account
+<!--#Crete an alternative button for a user to nav to login screen if they have an account-->
 If you have an account, <a href="/login"><strong>login</strong></a>
 
 {% endblock %}

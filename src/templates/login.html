@@ -1,7 +1,8 @@
 <html>
-
+{% extends 'base.html' %}
     <h1> Login </h1>
-  {% block content %}
+  {% block body %}
+    <br>
     <form method="POST">
     {% csrf_token %}
 <!--    csrf token for security concerns    -->
