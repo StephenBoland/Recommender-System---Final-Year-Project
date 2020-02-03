@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'Home',
     'bootstrap4',
     'django_extensions',
-    'import_export'
+    'import_export',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,4 @@ STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'static'),
 )
 LOGIN_REDIRECT_URL = 'logged_in'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -8,13 +8,18 @@ from tablib import Dataset
 
 def home_view(request, *args, **kwargs):
     return render(request, "home.html", {})
+def AccountSettings_view(request, *args, **kwargs):
+    return render(request, "AccountSettings.html", {})
 def Import_view(request, *args, **kwargs):
     return render(request, "Import.html", {})
+def Import_Breweryview(request, *args, **kwargs):
+    return render(request, "ImportBrewery.html", {})
 def base_view(request, *args, **kwargs):
     return render(request,"base.html", {})
 def logged_in_view(request, *args, **kwargs):
     return render(request, "logged_in.html",{})
 
+#login and registration forms
 def register_view(request):
     if request.method == "POST":
         form = RegistrationForm(request.POST)
@@ -32,6 +37,10 @@ def register_view(request):
                   "register.html",
                   context={"form":form})
 
+
+
+
+#uploading csv file for beer database
 def simple_upload(request):
     if request.method == 'POST':
         file_format = request.POST['file_format']
@@ -51,3 +60,23 @@ def simple_upload(request):
             beer_resource.import_data(dataset, dry_run=False) 
         
     return render(request, 'Import.html')
+#uploading csv file for brewery database
+def simple_uploadbrewery(request):
+    if request.method == 'POST':
+        file_format = request.POST['file_format']
+        brewery_resource = BreweryInformation()
+        dataset = Dataset()
+        new_brewery = request.FILES['importData']
+        
+        
+        if file_format == 'CSV':
+            imported_data = dataset.load(new_brewery.read().decode('utf-8'),format='csv')
+            result = brewery_resource.import_data(dataset, dry_run=True)
+        elif file_format =='JSON':
+            imported_data = dataset.load(new_brewery.read().decode('utf-8'),format='json')
+            result = brewery_resource.import_data(dataset, dry_run=True)
+            
+        if not result.has_errors():
+            brewery_resource.import_data(dataset, dry_run=False) 
+        
+    return render(request, 'Importbrewery.html')
